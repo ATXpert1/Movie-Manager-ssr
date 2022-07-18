@@ -1,0 +1,16 @@
+[
+    {
+        "id": "6280fe0eaa08e450d368cc13",
+        "firstName": "admin",
+        "lastName": "user",
+        "createdDate": "01/01/2022",
+        "sessionTimeOut": "0.25"
+    },
+    {
+        "id": "6291e4c169e4675ab2924513",
+        "firstName": "liron",
+        "lastName": "feldman",
+        "createdDate": "5/28/2022",
+        "sessionTimeOut": 12
+    }
+]

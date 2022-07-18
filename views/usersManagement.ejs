@@ -1,0 +1,38 @@
+<html>
+<header>
+    <%- include('./partials/header.ejs') %>
+</header> <br> <br>
+
+<body>
+    <h1>Users</h1> <br>
+    <ul class="list-style">
+        <li> <input type="button" value="All Users" onClick="toggleUserList()"> </li>
+        <li> <button type="button" onclick="toggleAddUser()">Add User</button> </li>
+    </ul> <br> <br> <br>
+    <div id="usersList">
+        <%- include('./users.ejs') %>
+    </div>
+    <div id="addUser" style="display: none;">
+        <%- include('./addUser.ejs') %>
+    </div>
+    <%= message %>
+</body>
+</html>
+<script>
+    let showUsersList = true;
+    let showAddUser = false;
+    let usersListDiv = document.getElementById('usersList');
+    let addUserDiv = document.getElementById('addUser');
+    function toggleUserList() {
+        if (usersListDiv.style.display === 'none') {
+            addUserDiv.style.display = 'none';
+            usersListDiv.style.display = 'block';
+        }
+    }
+    function toggleAddUser() {
+        if (addUserDiv.style.display === 'none') {
+            usersListDiv.style.display = 'none';
+            addUserDiv.style.display = 'block';
+        }
+    }
+</script>

@@ -1,0 +1,14 @@
+<html>
+
+<body>
+    <form action="/login/submit" method="post">
+        <input type="text" name="username" required> <br>
+        <input type="password" name="password" required><br>
+        <input type="submit"> <a href="/createAccount">Create Account</a>
+    </form>
+    <% if(message.length > 0){ %>
+        <%= message %>
+    <% } %>
+</body>
+
+</html>

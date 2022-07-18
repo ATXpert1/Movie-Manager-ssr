@@ -1,0 +1,38 @@
+<html>
+<header>
+    <%- include('./partials/header.ejs') %> <br><br><br>
+</header>
+
+<body>
+    <div>
+        <input type="button" value="All members" onclick="toggleAllMembers()">
+        <input type="button" value="Add member" onclick="toggleAddMember()">
+    </div>
+    <div id="message">
+        <%= message %>
+    </div>
+    <div id="allMembers">
+        <%- include('./allMembers.ejs') %>
+    </div>
+    <div style="display: none;" id="addMember">
+        <%- include('./addMember.ejs') %>
+    </div>
+</body>
+
+</html>
+<script>
+    let membersListDiv = document.getElementById('allMembers');
+    let addMemberDiv = document.getElementById('addMember');
+    function toggleAllMembers() {
+        if (membersListDiv.style.display === 'none') {
+            addMemberDiv.style.display = 'none';
+            membersListDiv.style.display = 'block';
+        }
+    }
+    function toggleAddMember() {
+        if (addMemberDiv.style.display === 'none') {
+            membersListDiv.style.display = 'none';
+            addMemberDiv.style.display = 'block';
+        }
+    }
+</script>

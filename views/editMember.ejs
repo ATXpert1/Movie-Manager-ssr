@@ -1,0 +1,14 @@
+<html>
+    <header>
+        <%- include('./partials/header.ejs') %> <br><br><br>
+    </header>
+    <body>
+        <form action="/members/editMember/submit/<%= member._id %>" method="post">
+            Name: <input type="text" name="name" value="<%= member.name%>" required><br>
+            Email: <input type="text" name="email" value="<%= member.email%>" required> <br>
+            City: <input type="text" name="city" value="<%= member.city%>" required> <br>
+            <input type="submit" value="Update"><input type="button" onclick="location.href='/subscriptions'" value="Cancel">
+        </form>
+    </body>
+</html>
+

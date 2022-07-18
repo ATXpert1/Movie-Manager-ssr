@@ -1,0 +1,24 @@
+<div>
+  <style>
+    .list-style li{
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  list-style-type: none;
+  font-size: 17px;
+}
+  </style>
+    <h1>Movies - Subscriptions Website</h1>
+    <ul class="list-style">
+        <li><a href="/Movies">Movies</a></li>
+        <li><a href="/Subscriptions">Subscriptions</a></li>
+        <% if(username === "admin"){ %>
+          <li><a href="/usersManagement">Users Management</a></li>
+        <% } %>
+        <li><a href="/logout">Log Out</a></li>
+        <li>Welcome <%=username%></li>
+        <a href=""></a>
+      </ul>
+</div>

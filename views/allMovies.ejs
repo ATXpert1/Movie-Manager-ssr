@@ -1,0 +1,22 @@
+<form action="/movies/searchMovie" method="post">
+    Find Movie: <input type="text" name="searchValue"> <input type="submit" value="Find"> <br>
+</form>
+<% movies.forEach((movie)=>{ %>
+    <div style="border-width:1px; border-style: solid; margin-bottom: 20; width:fit-content;" >
+        <%= movie.name %> <br>
+        <%= movie.genres %> <br>
+        <div style="display: inline-block;">
+            <img src="<%= movie.image %>"width="66" height="99">
+            <div>
+                Subscriptions watched: <br>
+                <% if(movie.subscriptions){ %>
+                    <% movie.subscriptions.forEach(function(subscription) { %>
+                        <a href="/subscriptions"><%=subscription.memberName%></a>
+                        <%= subscription.date %>
+                     <% }) %> 
+                <% } %>
+            </div>
+        </div> <br>
+        <a href="/movies/editMovie/<%=movie._id%>">Edit</a><a href="/movies/Delete/<%=movie._id%>">Delete</a>
+    </div>
+<% }) %>

@@ -1,0 +1,80 @@
+<form id="addUserForm" action="/usersManagement/addUser" method="post">
+    First Name: <input type="text" name="firstName"> <br>
+    Last Name: <input type="text" name="lastName"> <br>
+    Username: <input type="text" name="username"> <br>
+    Session Time Out (Minutes): <input type="number" name="SessionTimeOut"> <br>
+    Permissions: <br>
+    <%- include('./duplicates/permissions.ejs') %> <br>
+        <input type="button" value="Save" onclick="formatForm()"><a href="/usersManagement">Cancel</a>
+</form>
+
+<script>
+    let checkbox1 = document.getElementById('ViewSubscriptions')
+    let checkbox2 = document.getElementById('CreateSubscriptions')
+    let checkbox3 = document.getElementById('DeleteSubscriptions')
+    let checkbox4 = document.getElementById('UpdateSubscriptions')
+    let checkbox5 = document.getElementById('ViewMovies');
+    let checkbox6 = document.getElementById('CreateMovies');
+    let checkbox7 = document.getElementById('DeleteMovies');
+    let checkbox8 = document.getElementById('UpdateMovies');
+    checkbox1.onchange = function () {
+        if (!checkbox1.checked && (checkbox2.checked || checkbox3.checked || checkbox4.checked)) {
+            checkbox1.checked = true;
+        }
+    }
+    checkbox2.onchange = function () {
+        if (checkbox2.checked) {
+            checkbox1.checked = true;
+        }
+    }
+    checkbox3.onchange = function () {
+        if (checkbox3.checked) {
+            checkbox1.checked = true;
+        }
+    }
+    checkbox4.onchange = function () {
+        if (checkbox4.checked) {
+            checkbox1.checked = true;
+        }
+    }
+    checkbox5.onchange = function () {
+        if (!checkbox5.checked && (checkbox6.checked || checkbox7.checked || checkbox8.checked)) {
+            checkbox5.checked = true;
+        }
+    }
+    checkbox6.onchange = function () {
+        if (checkbox6.checked) {
+            checkbox5.checked = true;
+        }
+    }
+    checkbox7.onchange = function () {
+        if (checkbox7.checked) {
+            checkbox5.checked = true;
+        }
+    }
+    checkbox8.onchange = function () {
+        if (checkbox8.checked) {
+            checkbox5.checked = true;
+        }
+    }
+    function formatForm() {
+        let form = document.getElementById('addUserForm');
+        let checked = [];
+        form.permissions.forEach((permission) => {
+            if (permission.checked) {
+                checked.push(permission.value)
+            }
+        })
+        if (!checked.length) {
+            window.alert('no checkboxes chosen')
+        }
+        else {
+            if (form.firstName.value && form.lastName.value && form.username.value && form.SessionTimeOut.value) {
+                form.submit();
+            }
+            else {
+                window.alert('make sure to fill everything')
+            }
+        }
+    }
+</script>

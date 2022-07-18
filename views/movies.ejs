@@ -1,0 +1,44 @@
+<html>
+<header>
+    <%- include('./partials/header.ejs') %> <br> <br><br>
+</header>
+
+<body>
+    <div style="border-width:1px; border-style: solid; margin-bottom: 20; width: 650px">
+        <h3>Movies</h3>
+        <div>
+            <input type="button" value="All Movies" onclick="toggleMoviesList()"> 
+            <input type="button" value="Add Movie" onclick="toggleAddMovie()">
+            
+        </div>
+        <div id="message">
+            <h3><%= message %></h3>
+        </div>
+        <div id="moviesListDiv">
+            <%- include('./allMovies.ejs') %>
+        </div>
+        <div id="addMovieDiv" style="display: none;">
+            <%- include('./addMovie.ejs') %>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    let showUsersList = true;
+    let showAddUser = false;
+    let usersListDiv = document.getElementById('moviesListDiv');
+    let addUserDiv = document.getElementById('addMovieDiv');
+    function toggleMoviesList() {
+        if (moviesListDiv.style.display === 'none') {
+            addMovieDiv.style.display = 'none';
+            moviesListDiv.style.display = 'block';
+        }
+    }
+    function toggleAddMovie() {
+        if (addMovieDiv.style.display === 'none') {
+            moviesListDiv.style.display = 'none';
+            addMovieDiv.style.display = 'block';
+        }
+    }
+</script>

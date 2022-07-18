@@ -1,0 +1,15 @@
+<html>
+<header>
+    <%- include('./partials/header.ejs') %> <br><br><br>
+</header>
+
+<body>
+    <form action="/movies/editMovie/<%= movie._id%>" method="post">
+        Name: <input type="text" name="name" value="<%= movie.name %>"> <br>
+        Genres: <input type="text" name="genres" value="<%= movie.genres %>"> <br>
+        Image Url: <input type="text" name="image" value="<%= movie.image %>"> <br>
+        Premiered: <input type="text" name="premiered" value="<%= movie.premiered %>"> <br>
+        <input type="submit" value="Update"> <input type="button" onclick="location.href='/Movies'" value="Cancel"></input>
+    </form>
+</body>
+</html>

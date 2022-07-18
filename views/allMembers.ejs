@@ -1,0 +1,48 @@
+<% members.forEach((member)=>{ %>
+    <div style="border-width:1px; border-style: solid; margin-bottom: 20; width: 500px;">
+        <div>
+            Name: <%=member.name %> <br>
+            Email: <%=member.email %> <br>
+            City: <%=member.city %> <br>
+            <input type="button" value="Edit" onclick="location.href='/members/editMember/<%=member._id%>'"> <input type="button" value="Delete" onclick="location.href='/members/deleteMember/<%=member._id%>'">
+        </div>
+        <div style="border-width:1px; border-style: solid; margin-bottom: 20;">
+
+            <input type="button" value="Subscribe to new movie" name="<%= member._id%>" onclick="(document.getElementById('<%=member._id%>').style.display==='none') ? 
+            (document.getElementById('<%=member._id%>').style.display='block'): (document.getElementById('<%=member._id%>').style.display='none')"> <br>
+            <div id="<%=member._id%>" style="display: none;">
+                <form action="/subscriptions/addMovieToSubscription/<%= member._id%>" method="post">
+                Add new movie:
+                <select name="movieId">
+                    <% movies.forEach(movie=>{ %>
+                        <% let flag = true %>
+                        <% if(member.movies){ %>
+                            <% member.movies.forEach(subscriptionMovie=>{ %>
+                                <% if(movie._id == subscriptionMovie.movieId){ %>
+                                    <% flag=false %>
+                                <% } %>
+                            <% }) %>
+                            <% if(flag){ %>
+                                <option value="<%=movie._id%>" name="movieId"><%= movie.name %></option>
+                            <% } %>
+                        <% } else { %>
+                            <option value="<%=movie._id%>" name="movieId"><%= movie.name %></option>
+                        <%}%>
+                    <%}) %> 
+                </select>
+                <input type="date" name="date" required>
+                <input type="submit" value="Add new movie">
+            </form>
+            </div>
+            Movies watched:<br>
+            <% if(member.movies) { %>
+                <ul>
+                    <% member.movies.forEach((movie)=>{ %>
+                        <li><a href="/movies/<%=movie.movieId%>"><%= movie.movieName %></a>, <%= movie.date %></li>
+                    <% }) %>
+                </ul>
+                
+            <% } %>
+        </div>
+    </div>   
+<% }) %>

@@ -1,0 +1,12 @@
+<html>
+    <body>
+        <form action="/createAccount/submit" method="post">
+            User Name: <input type="text" name="username" required> <br>
+            Password: <input type="text" name="password" required> <br>
+            <input type="submit" value="Create">
+            <% if(message.length > 0){ %>
+                <%=message%>
+            <% } %>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+<% users.forEach((user)=>{ %>
+    <ul style="list-style-type: none; border: 1;">
+        <li> Name: <%= user.firstName %> <%=user.lastName%>
+        </li>
+        <li>User Name: <%= user.username %>
+        </li>
+        <li>Session Timeout: <%= user.sessionTimeOut %>
+        </li>
+        <li>Created Date: <%= user.createdDate %>
+        </li>
+        <li>Permissions: [<%= user.permissions %>]</li>
+    </ul>
+    <a href="/editUser/<%=user.id%>">Edit</a> <a href="/editUser/delete/<%=user.id%>" >Delete</a>
+
+    <% }) %>
+    
